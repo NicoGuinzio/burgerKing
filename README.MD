@@ -44,3 +44,9 @@ Este proyecto consiste en desarrollar un sistema para gestionar la información 
 - Código fuente.
 - Documentación generada con Javadoc.
 - Diagramas UML de caso de uso, de clases y uno de secuencia, generados con [PlantUML](http://plantuml.com/es) o [PlantText](http://www.planttext.com) y grabados en formato PNG.
+
+
+## Autores
+- Guinzio, Nicolás
+- Risoluto, Ariel
+
