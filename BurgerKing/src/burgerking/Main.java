@@ -6,7 +6,7 @@ package burgerking;
 
 /**
  *
- * @author nicol
+ * @author Guinzio Nicolás y Risoluto Ariel -- Equipo 9
  */
 public class Main {
 
