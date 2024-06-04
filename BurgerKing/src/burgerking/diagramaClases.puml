@@ -1,0 +1,84 @@
+@startuml
+class Usuario {
+  -nombre: String
+  -contraseña: String
+}
+
+class Inspector extends Usuario {
+  +obtenerListado(): void
+}
+
+class Gerente extends Usuario {
+  +consultarEmpleados(): void
+  +asignarRol(id_empleado: int, rol: String): void
+  +actualizarMenu(): void
+}
+
+class Vendedor extends Usuario {
+  +consultarMenu(): void
+  +tomarPedido(): void
+  +cobrar(pedido: Pedido): void
+}
+
+class Cocinero extends Usuario {
+  -especialidad: String
+  +cocinar(pedido: Pedido): void
+}
+
+class Cliente {
+  -nombre: String
+  +realizarPedido(): void
+  +pagar(pedido: Pedido): void
+}
+
+class Plato {
+  -nombre: String
+  -tipo: String
+  -ingredientes: List<String>
+  -precio: float
+  +sacarIngrediente(ingrediente: String): void
+  +agregarIngrediente(ingrediente: String): void
+}
+
+class Item {
+  -plato: Plato
+  -cantidad: int
+  +agregarPlato(plato: Plato): void
+}
+
+class Pedido {
+  -cliente: Cliente
+  -items: List<Item>
+  +agregarItem(item: Item): void
+}
+
+class Menu {
+  -nombre: String
+  -platos: List<Plato>
+  +actualizarMenu(plato: Plato, agregar: boolean): void
+}
+
+class "ListadoDeVentas" {
+  -ganancia: float
+  -crecimiento: float
+  -dia: int
+  -mes: int
+  -año: int
+  -pedidoMasVendido: Pedido
+  +actualizar(): void
+}
+
+Usuario <|-- Inspector
+Usuario <|-- Gerente
+Usuario <|-- Vendedor
+Usuario <|-- Cocinero
+
+Inspector --> "1" ListadoDeVentas : obtiene
+Gerente --> "1" ListadoDeVentas : obtiene
+Vendedor --> "1" Menu : consulta
+Cliente --> "n" Pedido : realiza
+Pedido --> "n" Item : tiene
+Item --> "1" Plato : contiene
+Menu --> "n" Plato : contiene
+
+@enduml
